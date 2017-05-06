@@ -25,7 +25,7 @@ SECRET_KEY = '^5(qdw&8xsb5s^$#*i*!s@*5l+!weburx8-^_(21)fit#xi=x3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-env.dbcu8murd4.us-east-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['web-app-tier.v623zhdfhs.us-east-1.elasticbeanstalk.com']
 
 
 # Application definition
@@ -80,7 +80,18 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
+# aws RDS
+if 'RDS_HOSTNAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
