@@ -10,11 +10,24 @@
     	{% if user.is_authenticated %}
 	        <div class="header">
 	        	<a class="homebtn" href="{% url 'home' %}">Home</a>
-	            <h1>Take care of your odd man</h1>
-	        </div>
-		
+	            <h1>Take care of your old man</h1>
+	        </div>	
+			<label>I want to use</label>
+			 <form action="{%url 'send_sqs'%}" method="get">
+				  <input type="text" name="q"><br>
+				  <button type="submit" value="Send request"></button>
+			</form>  
+			<label>as profile picture</label>
 			<div class="content">
 				<h2>Schedule old man life</h2>
+				<img id="profile"/>
+				<script type="text/javascript">
+					var photo = document.querySelector("#profile");
+					var a = "{{iamge}}";
+					if(a !== null && a!== ""){
+						photo.setAttribute("src",a)
+					}
+				</script>
 				<hr>
 				<h2 style="color:red">Some activity about your old man</h2>
 			{% for post in posts %}

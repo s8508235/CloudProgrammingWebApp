@@ -1,9 +1,9 @@
 branch-defaults:
   master:
-    environment: web-app-tier
+    environment: django-env
     group_suffix: null
 global:
-  application_name: WebApp
+  application_name: django-web
   branch: null
   default_ec2_keyname: null
   default_platform: python2.7

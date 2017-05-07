@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^post_new/$', views.post_new, name='post_new'),
+    url(r'^send_sqs_get_images/$', views.send_sqs, name='send_sqs'),
 ]
